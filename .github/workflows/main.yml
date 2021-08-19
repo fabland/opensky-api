@@ -10,13 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install additional packages
-        run: sudo apt-get update -y && sudo apt-get install -y maven default-jdk
-      - name: Sphinx Documentation
-        uses: ammaraskar/sphinx-action@master
-        with:
-          docs-folder: "docs/"
-          pre-build-command: "apt-get update -y && apt-get install -y maven default-jdk"
-          build-command: "make"
+        run: sudo apt-get update -y && sudo apt-get install -y maven default-jdk python3-sphinx
+      - name: Make documentation
+        run: cd docs && make
       - name: Commit documentation changes
         run: |
           git clone https://github.com/fabland/opensky-api.git --branch gh-pages --single-branch gh-pages
