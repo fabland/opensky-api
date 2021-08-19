@@ -5,13 +5,14 @@ name: CI
 on: [push]
 
 jobs:
-  build:
+  docs:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - name: Sphinx Documentation
         uses: ammaraskar/sphinx-action@master
         with:
-          docs-folder: "./"
+          docs-folder: "docs/"
           pre-build-command: "apt-get update -y && apt-get install -y maven default-jdk"
           build-command: "make"
       - name: Commit documentation changes
