@@ -11,7 +11,7 @@ jobs:
       - name: Sphinx Documentation
         uses: ammaraskar/sphinx-action@master
         with:
-          docs-folder: "docs/"
+          docs-folder: "./docs/"
           pre-build-command: "apt-get update -y && apt-get install -y maven default-jdk"
           build-command: "make"
       - name: Commit documentation changes
